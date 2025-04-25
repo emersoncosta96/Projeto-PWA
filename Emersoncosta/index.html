@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CheckIn de clientes</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="icons/icon-192.png" />
+    <meta name="theme-color" content="#0d6efd" />
+    <!-- iOS meta tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("service-worker.js")
+            .then((registration) => console.log("ServiceWorker registrado"))
+            .catch((err) =>
+              console.log("Falha ao registrar ServiceWorker", err)
+            );
+        });
+      }
+    </script>
+  </head>
+  <body class="bg-light">
+    <div class="container mt-3">
+      <h1 class="text-center mb-3">CheckIn Clientes</h1>
+
+      <form
+        id="checkin-form"
+        class="d-flex flex-column flex-md-row gap-2 justify-content-center mb-3"
+      >
+        <input type="hidden" id="edit-id" />
+        <label for="name" class="visually-hidden">Nome</label>
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          placeholder="Digite seu nome"
+          required
+        />
+        <button type="submit" class="btn btn-primary" id="submit-btn">
+          Registrar
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary d-none"
+          id="cancel-edit-btn"
+        >
+          Cancelar
+        </button>
+      </form>
+
+      <div id="checkin-list" class="list-group"></div>
+
+      <div id="offline-notification" class="offline-notification"></div>
+
+      <div class="text-center mt-4">
+        <p>
+          <a href="mailto:emerson.costa@edu.pe.senac.br">Fale conosco</a> |
+          <a href="tel:+5581997435771">Ligue agora</a> |
+          <a href="sms:++558197435771">Envie SMS</a>
+        </p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
